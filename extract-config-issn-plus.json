@@ -1,0 +1,57 @@
+{
+  "datePatterns": ["%Y", "(%Y)", "[%Y]", "%Y-%m-%d", "%d/%m/%Y", "%Y%m%d"],
+  "recordTagString": "record",
+  "recordTag": "marc:record",
+  "recordIDExpression": "./marc:controlfield[@tag=\"001\"]",
+  "recordIDPrefix": "",
+  "recordIDColumnName": "autID",
+  "dataDelimiter": ";",
+  "execution": {
+    "byteChunkSize": "1000000",
+    "recordBatchSize": "40000"
+  },
+  "recordFilter": {
+    "expression": "./marc:controlfield[@tag=\"007\"]",
+    "condition": "startswith",
+    "value": "t"
+  },
+
+  "dataFields": [
+    {
+      "columnName": "country",
+      "expression": "./marc:datafield[@tag=\"044\"]/marc:subfield[@code=\"a\"]",
+      "valueType": "text"
+    },
+    {
+      "columnName": "udc",
+      "expression": "./marc:datafield[@tag=\"080\"]/marc:subfield[@code=\"a\"]",
+      "valueType": "text"
+    },
+    {
+      "columnName": "title",
+      "expression": "./marc:datafield[@tag=\"245\"]/marc:subfield[@code=\"a\"]",
+      "valueType": "text"
+    },
+    {
+      "columnName": "shortTitle",
+      "expression": "./marc:datafield[@tag=\"210\"]/marc:subfield[@code=\"a\"]",
+      "valueType": "text"
+    },
+    {
+      "columnName": "place",
+      "expression": "./marc:datafield[@tag=\"260\"]/marc:subfield[@code=\"a\"]",
+      "valueType": "text"
+    },
+    {
+      "columnName": "publisher",
+      "expression": "./marc:datafield[@tag=\"260\"]/marc:subfield[@code=\"b\"]",
+      "valueType": "text"
+    },
+    {
+      "columnName": "url",
+      "expression": "./marc:datafield[@tag=\"856\"]/marc:subfield[@code=\"u\"]",
+      "valueType": "text"
+    }
+  ]
+}
+
