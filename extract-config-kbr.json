@@ -18,7 +18,7 @@
     },
     {
       "columnName": "udc",
-      "expression": "./marc:datafield[@tag=\"080\"]/marc:subfield[@code=\"a\"]",
+      "expression": "./marc:datafield[@tag=\"653\"]/marc:subfield[@code=\"a\"]",
       "valueType": "text"
     },
     {
@@ -32,18 +32,18 @@
       "valueType": "text"
     },
     {
-      "columnName": "shortTitle",
-      "expression": "./marc:datafield[@tag=\"210\"]/marc:subfield[@code=\"a\"]",
+      "columnName": "titleRemainder",
+      "expression": "./marc:datafield[@tag=\"245\"]/marc:subfield[@code=\"b\"]",
       "valueType": "text"
     },
     {
       "columnName": "place",
-      "expression": "./marc:datafield[@tag=\"260\"]/marc:subfield[@code=\"a\"]",
+      "expression": "./marc:datafield[@tag=\"264\"]/marc:subfield[@code=\"a\"]",
       "valueType": "text"
     },
     {
       "columnName": "publisher",
-      "expression": "./marc:datafield[@tag=\"260\"]/marc:subfield[@code=\"b\"]",
+      "expression": "./marc:datafield[@tag=\"264\"]/marc:subfield[@code=\"b\"]",
       "valueType": "text"
     },
     {

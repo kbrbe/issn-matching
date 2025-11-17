@@ -33,8 +33,18 @@
       "valueType": "text"
     },
     {
+      "columnName": "alternateTitle",
+      "expression": "./marc:datafield[@tag=\"246\"]/marc:subfield[@code=\"a\"]",
+      "valueType": "text"
+    },
+    {
       "columnName": "shortTitle",
       "expression": "./marc:datafield[@tag=\"210\"]/marc:subfield[@code=\"a\"]",
+      "valueType": "text"
+    },
+    {
+      "columnName": "keyTitle",
+      "expression": "./marc:datafield[@tag=\"222\"]/marc:subfield[@code=\"a\"]",
       "valueType": "text"
     },
     {
