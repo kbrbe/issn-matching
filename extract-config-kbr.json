@@ -24,12 +24,14 @@
     {
       "columnName": "title",
       "expression": "./marc:datafield[@tag=\"245\"]/marc:subfield[@code=\"a\"]",
-      "valueType": "text"
+      "valueType": "text",
+      "splitCharacter": ";"
     },
     {
       "columnName": "alternateTitle",
       "expression": "./marc:datafield[@tag=\"246\"]/marc:subfield[@code=\"a\"]",
-      "valueType": "text"
+      "valueType": "text",
+      "splitCharacter": ";"
     },
     {
       "columnName": "titleRemainder",
@@ -39,7 +41,8 @@
     {
       "columnName": "place",
       "expression": "./marc:datafield[@tag=\"264\"]/marc:subfield[@code=\"a\"]",
-      "valueType": "text"
+      "valueType": "text",
+      "splitCharacter": ";"
     },
     {
       "columnName": "publisher",

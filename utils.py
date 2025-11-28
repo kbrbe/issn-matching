@@ -24,6 +24,11 @@ def createInputDataframe(prefix, path, columns):
   return mainDf, colDfs
 
 # -----------------------------------------------------------------------------
+def normalizeColumn(df, c):
+  df[c] = df[c].str.lower().str.normalize('NFKD').str.encode('ascii', 'ignore').str.decode('utf-8')
+  return df
+
+# -----------------------------------------------------------------------------
 def normalize(s):
     if pd.isna(s):
         return s
