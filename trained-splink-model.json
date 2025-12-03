@@ -1,0 +1,133 @@
+{
+    "link_type": "dedupe_only",
+    "probability_two_random_records_match": 0.0001,
+    "retain_matching_columns": true,
+    "retain_intermediate_calculation_columns": true,
+    "additional_columns_to_retain": [],
+    "sql_dialect": "duckdb",
+    "linker_uid": "izby2gq3",
+    "em_convergence": 0.0001,
+    "max_iterations": 25,
+    "bayes_factor_column_prefix": "bf_",
+    "term_frequency_adjustment_column_prefix": "tf_",
+    "comparison_vector_value_column_prefix": "gamma_",
+    "unique_id_column_name": "unique_id",
+    "source_dataset_column_name": "source_dataset",
+    "blocking_rules_to_generate_predictions": [
+        {
+            "blocking_rule": "l.dataSource != r.dataSource AND l.title = r.title",
+            "sql_dialect": "duckdb"
+        },
+        {
+            "blocking_rule": "l.dataSource != r.dataSource AND l.url = r.url",
+            "sql_dialect": "duckdb"
+        }
+    ],
+    "comparisons": [
+        {
+            "output_column_name": "publisher",
+            "comparison_levels": [
+                {
+                    "sql_condition": "\"publisher_l\" IS NULL OR \"publisher_r\" IS NULL",
+                    "label_for_charts": "publisher is NULL",
+                    "fix_m_probability": false,
+                    "fix_u_probability": false,
+                    "is_null_level": true
+                },
+                {
+                    "sql_condition": "\"publisher_l\" = \"publisher_r\"",
+                    "label_for_charts": "Exact match on publisher",
+                    "m_probability": 0.20544652261488155,
+                    "u_probability": 0.0006226962197292614,
+                    "fix_m_probability": false,
+                    "fix_u_probability": false
+                },
+                {
+                    "sql_condition": "levenshtein(\"publisher_l\", \"publisher_r\") <= 2",
+                    "label_for_charts": "Levenshtein distance of publisher <= 2",
+                    "m_probability": 0.04791664201138709,
+                    "u_probability": 0.00028093809551831103,
+                    "fix_m_probability": false,
+                    "fix_u_probability": false
+                },
+                {
+                    "sql_condition": "ELSE",
+                    "label_for_charts": "All other comparisons",
+                    "m_probability": 0.7466368353737314,
+                    "u_probability": 0.9990963656847525,
+                    "fix_m_probability": false,
+                    "fix_u_probability": false
+                }
+            ],
+            "comparison_description": "LevenshteinAtThresholds"
+        },
+        {
+            "output_column_name": "title",
+            "comparison_levels": [
+                {
+                    "sql_condition": "\"title_l\" IS NULL OR \"title_r\" IS NULL",
+                    "label_for_charts": "title is NULL",
+                    "fix_m_probability": false,
+                    "fix_u_probability": false,
+                    "is_null_level": true
+                },
+                {
+                    "sql_condition": "\"title_l\" = \"title_r\"",
+                    "label_for_charts": "Exact match on title",
+                    "m_probability": 0.0023949307776371166,
+                    "u_probability": 7.52096531108141e-05,
+                    "fix_m_probability": false,
+                    "fix_u_probability": false
+                },
+                {
+                    "sql_condition": "levenshtein(\"title_l\", \"title_r\") <= 2",
+                    "label_for_charts": "Levenshtein distance of title <= 2",
+                    "m_probability": 0.003193176317894645,
+                    "u_probability": 7.219729721504603e-05,
+                    "fix_m_probability": false,
+                    "fix_u_probability": false
+                },
+                {
+                    "sql_condition": "ELSE",
+                    "label_for_charts": "All other comparisons",
+                    "m_probability": 0.9944118929044682,
+                    "u_probability": 0.9998525930496741,
+                    "fix_m_probability": false,
+                    "fix_u_probability": false
+                }
+            ],
+            "comparison_description": "LevenshteinAtThresholds"
+        },
+        {
+            "output_column_name": "place",
+            "comparison_levels": [
+                {
+                    "sql_condition": "\"place_l\" IS NULL OR \"place_r\" IS NULL",
+                    "label_for_charts": "place is NULL",
+                    "fix_m_probability": false,
+                    "fix_u_probability": false,
+                    "is_null_level": true
+                },
+                {
+                    "sql_condition": "\"place_l\" = \"place_r\"",
+                    "label_for_charts": "Exact match on place",
+                    "m_probability": 0.8917554258524805,
+                    "u_probability": 0.2600648906928508,
+                    "fix_m_probability": false,
+                    "fix_u_probability": false,
+                    "tf_adjustment_column": "place",
+                    "tf_adjustment_weight": 1.0
+                },
+                {
+                    "sql_condition": "ELSE",
+                    "label_for_charts": "All other comparisons",
+                    "m_probability": 0.10824457414751956,
+                    "u_probability": 0.7399351093071492,
+                    "fix_m_probability": false,
+                    "fix_u_probability": false
+                }
+            ],
+            "comparison_description": "ExactMatch"
+        }
+    ]
+}
